@@ -7,6 +7,7 @@ function Landing() {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const [audioSrc, setAudioSrc] = useState('/audio/landing-song-one.mp3');
+  const [selectedButton, setSelectedButton] = useState('one');
 
   const handleButtonClick = () => {
     if (audioRef.current) {
@@ -77,8 +78,8 @@ function Landing() {
           style={{
             fontFamily: 'VCR, monospace',
             color: 'rgb(179, 217, 255)',
-            fontSize: '7vw',
-            letterSpacing: '2vw',
+            fontSize: '5vw',
+            letterSpacing: '1vw',
             textShadow: `
           0 0 16px rgba(179,217,255,0.8),
           0 0 32px rgba(179,217,255,0.6),
@@ -91,7 +92,9 @@ function Landing() {
             userSelect: 'none'
           }}
         >
-          BOOYAH!!
+          {selectedButton === 'one' && 'YA FAJJA!'}
+          {selectedButton === 'two' && 'THE WICK!'}
+          {selectedButton === 'three' && 'THIS GUY!'}
         </h1>
       </div>
       <div
@@ -113,8 +116,10 @@ function Landing() {
           style={{
             fontFamily: 'VCR, monospace',
             color: 'rgb(179, 217, 255)',
-            fontSize: '18px',
+            fontSize: '20px',
             letterSpacing: '1.5px',
+            padding: '10px 40px',
+            borderRadius: '12px',
             textShadow: `
       0 0 8px rgba(179,217,255,0.8),
       0 0 16px rgba(179,217,255,0.6),
@@ -123,10 +128,16 @@ function Landing() {
             filter: 'blur(0.75px)',
             textTransform: 'uppercase',
             background: 'transparent',
-            border: '1px solid rgb(179, 217, 255)'
+            border: selectedButton === 'one'
+              ? '2px solid rgb(179, 217, 255)'
+              : '1px solid rgb(179, 217, 255)',
+            boxShadow: selectedButton === 'one'
+              ? '0 0 16px 4px rgba(179,217,255,0.4)'
+              : 'none'
           }}
           onClick={() => {
             setAudioSrc('/audio/landing-song-one.mp3');
+            setSelectedButton('one');
             setTimeout(() => {
               if (audioRef.current) {
                 audioRef.current.play();
@@ -142,8 +153,10 @@ function Landing() {
           style={{
             fontFamily: 'VCR, monospace',
             color: 'rgb(179, 217, 255)',
-            fontSize: '18px',
+            fontSize: '20px',
             letterSpacing: '1.5px',
+            padding: '10px 40px',
+            borderRadius: '12px',
             textShadow: `
               0 0 8px rgba(179,217,255,0.8),
               0 0 16px rgba(179,217,255,0.6),
@@ -152,10 +165,16 @@ function Landing() {
             filter: 'blur(0.75px)',
             textTransform: 'uppercase',
             background: 'transparent',
-            border: '1px solid rgb(179, 217, 255)'
+            border: selectedButton === 'two'
+              ? '2px solid rgb(179, 217, 255)'
+              : '1px solid rgb(179, 217, 255)',
+            boxShadow: selectedButton === 'two'
+              ? '0 0 16px 4px rgba(179,217,255,0.4)'
+              : 'none'
           }}
           onClick={() => {
             setAudioSrc('/audio/landing-song-two.mp3');
+            setSelectedButton('two');
             setTimeout(() => {
               if (audioRef.current) {
                 audioRef.current.play();
@@ -171,8 +190,10 @@ function Landing() {
           style={{
             fontFamily: 'VCR, monospace',
             color: 'rgb(179, 217, 255)',
-            fontSize: '18px',
+            fontSize: '20px',
             letterSpacing: '1.5px',
+            padding: '10px 40px',
+            borderRadius: '12px',
             textShadow: `
       0 0 8px rgba(179,217,255,0.8),
       0 0 16px rgba(179,217,255,0.6),
@@ -181,10 +202,14 @@ function Landing() {
             filter: 'blur(0.75px)',
             textTransform: 'uppercase',
             background: 'transparent',
-            border: '1px solid rgb(179, 217, 255)'
+            border: '2px solid ' + (selectedButton === 'three' ? 'rgb(179, 217, 255)' : 'rgba(179,217,255,0.5)'),
+            boxShadow: selectedButton === 'three'
+              ? '0 0 16px 4px rgba(179,217,255,0.4)'
+              : 'none'
           }}
           onClick={() => {
             setAudioSrc('/audio/landing-song-three.mp3');
+            setSelectedButton('three');
             setTimeout(() => {
               if (audioRef.current) {
                 audioRef.current.play();
