@@ -275,42 +275,87 @@ function Landing() {
           {isPlaying ? '⏸ PAUSE' : '▶ PLAY'}
         </button>
       </div>
-      <div style={{
-        position: 'fixed',
-        top: 32, //
-        left: '50%',
-        transform: 'translateX(-50%)',
-        zIndex: 30,
-        width: 400,
-        background: 'rgba(10,20,40,0.85)',
-        borderRadius: 12,
-        padding: '16px 24px',
-        boxShadow: '0 0 24px 8px rgba(179,217,255,0.15)',
-        display: 'flex',
-        alignItems: 'center',
-        gap: 16
-      }}>
-        <span style={{ color: '#b3d9ff', fontFamily: 'VCR, monospace', minWidth: 48, textAlign: 'right' }}>
-          {formatTime(currentTime)}
-        </span>
-        <input
-          type="range"
-          min={0}
-          max={duration}
-          value={currentTime}
-          step="0.01"
-          onChange={handleSeek}
-          style={{
-            flex: 1,
-            accentColor: '#b3d9ff',
-            height: 4,
-            borderRadius: 2
-          }}
-        />
-        <span style={{ color: '#b3d9ff', fontFamily: 'VCR, monospace', minWidth: 48, textAlign: 'left' }}>
-          {formatTime(duration)}
-        </span>
-      </div>
+<div
+  style={{
+    position: 'fixed',
+    top: 28,
+    left: '50%',
+    transform: 'translateX(-50%)',
+    zIndex: 30,
+    width: 420,
+    background: 'rgba(10,20,40,0.35)',
+    borderRadius: 16,
+    padding: '12px 32px',
+    boxShadow: '0 0 32px 8px rgba(179,217,255,0.18)',
+    display: 'flex',
+    alignItems: 'center',
+    gap: 18,
+    border: '2px solid rgb(179, 217, 255)',
+    textShadow: `
+      0 0 8px rgba(179,217,255,0.8),
+      0 0 16px rgba(179,217,255,0.6),
+      0 0 32px rgba(179,217,255,0.4)
+    `,
+    fontFamily: 'VCR, monospace',
+    filter: 'blur(0.2px)',
+    backdropFilter: 'blur(2px)',
+  }}
+>
+  <span style={{
+    color: 'rgb(179, 217, 255)',
+    fontFamily: 'VCR, monospace',
+    minWidth: 48,
+    textAlign: 'right',
+    fontSize: '1.2rem',
+    letterSpacing: '2px',
+    textShadow: `
+      0 0 8px rgba(179,217,255,0.8),
+      0 0 16px rgba(179,217,255,0.6),
+      0 0 32px rgba(179,217,255,0.4)
+    `
+  }}>
+    {formatTime(currentTime)}
+  </span>
+  <input
+    type="range"
+    min={0}
+    max={duration}
+    value={currentTime}
+    step="0.01"
+    onChange={handleSeek}
+    style={{
+      flex: 1,
+      accentColor: '#b3d9ff',
+      height: 8,
+      borderRadius: 4,
+      background: 'rgba(179,217,255,0.08)',
+      boxShadow: `
+        0 0 8px rgba(179,217,255,0.8),
+        0 0 16px rgba(179,217,255,0.6)
+      `,
+      outline: 'none',
+      border: '1.5px solid rgba(179,217,255,0.5)',
+      margin: '0 12px',
+      WebkitAppearance: 'none',
+      appearance: 'none',
+    }}
+  />
+  <span style={{
+    color: 'rgb(179, 217, 255)',
+    fontFamily: 'VCR, monospace',
+    minWidth: 48,
+    textAlign: 'left',
+    fontSize: '1.2rem',
+    letterSpacing: '2px',
+    textShadow: `
+      0 0 8px rgba(179,217,255,0.8),
+      0 0 16px rgba(179,217,255,0.6),
+      0 0 32px rgba(179,217,255,0.4)
+    `
+  }}>
+    {formatTime(duration)}
+  </span>
+</div>
       <Row>
         <Col xs="12" className="p-0">
           <div className="video-wrapper">
