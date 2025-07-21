@@ -356,6 +356,90 @@ function Landing() {
           {formatTime(duration)}
         </span>
       </div>
+      <div
+        style={{
+          position: 'fixed',
+          bottom: 24,
+          right: 32,
+          zIndex: 50,
+          display: 'flex',
+          flexDirection: 'row',
+          gap: '10px', // closer together
+        }}
+      >
+        <a
+          href="https://www.instagram.com/romanscan_"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'rgba(179,217,255,0.10)',
+            borderRadius: '6px',
+            padding: '6px',
+            boxShadow: '0 0 16px 4px rgba(179,217,255,0.25)',
+            filter: 'blur(0.2px)',
+            transition: 'box-shadow 0.2s',
+            border: 'none'
+          }}
+        >
+          <svg width="32" height="32" viewBox="0 0 448 512" fill="none">
+            <rect x="64" y="64" width="320" height="320" rx="80" stroke="rgb(179, 217, 255)" strokeWidth="32" fill="none" />
+            <circle cx="224" cy="224" r="80" stroke="rgb(179, 217, 255)" strokeWidth="32" fill="none" />
+            <circle cx="336" cy="112" r="16" fill="rgb(179, 217, 255)" />
+          </svg>
+        </a>
+        <a
+          href="https://www.youtube.com/@roman_scan"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'rgba(179,217,255,0.10)',
+            borderRadius: '6px',
+            padding: '6px',
+            boxShadow: '0 0 16px 4px rgba(179,217,255,0.25)',
+            filter: 'blur(0.2px)',
+            transition: 'box-shadow 0.2s',
+            border: 'none'
+          }}
+        >
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="6" width="18" height="12" rx="6" stroke="rgb(179, 217, 255)" strokeWidth="2" fill="none" />
+            <polygon points="10,9 16,12 10,15" fill="rgb(179, 217, 255)" />
+          </svg>
+        </a>
+        <a
+          href="https://open.spotify.com/artist/6MhmflaNfZPXioLNadhYOb?si=d79EWalwRpORx8f37lpBFg"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Spotify"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: 'rgba(179,217,255,0.10)',
+            borderRadius: '6px',
+            padding: '6px',
+            boxShadow: '0 0 16px 4px rgba(179,217,255,0.25)',
+            filter: 'blur(0.2px)',
+            transition: 'box-shadow 0.2s',
+            border: 'none'
+          }}
+        >
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="rgb(179, 217, 255)" strokeWidth="2" fill="none" />
+            <path d="M8 15c2.5-1 5.5-1 8 0" stroke="rgb(179, 217, 255)" strokeWidth="2" strokeLinecap="round" />
+            <path d="M7 12c3-1.5 7-1.5 10 0" stroke="rgb(179, 217, 255)" strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M7 9.5c3.5-1 8-1 11.5 0" stroke="rgb(179, 217, 255)" strokeWidth="1" strokeLinecap="round" />
+          </svg>
+        </a>
+      </div>
       <Row>
         <Col xs="12" className="p-0">
           <div className="video-wrapper">
