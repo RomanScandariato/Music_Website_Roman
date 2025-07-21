@@ -8,6 +8,8 @@ function Landing() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [audioSrc, setAudioSrc] = useState('/audio/landing-song-one.mp3');
   const [selectedButton, setSelectedButton] = useState('one');
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   const handleButtonClick = () => {
     if (audioRef.current) {
@@ -58,6 +60,37 @@ function Landing() {
     };
   }, []);
 
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const updateTime = () => setCurrentTime(audio.currentTime);
+    const updateDuration = () => setDuration(audio.duration || 0);
+
+    audio.addEventListener('timeupdate', updateTime);
+    audio.addEventListener('loadedmetadata', updateDuration);
+
+    return () => {
+      audio.removeEventListener('timeupdate', updateTime);
+      audio.removeEventListener('loadedmetadata', updateDuration);
+    };
+  }, [audioSrc]);
+
+  const handleSeek = (e: { target: { value: any; }; }) => {
+    const audio = audioRef.current;
+    const value = Number(e.target.value);
+    if (audio) {
+      audio.currentTime = value;
+      setCurrentTime(value);
+    }
+  };
+
+  function formatTime(sec: number) {
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return `${m}:${s.toString().padStart(2, '0')}`;
+  }
+
   return (
     <Container fluid={true}>
       <div
@@ -78,8 +111,8 @@ function Landing() {
           style={{
             fontFamily: 'VCR, monospace',
             color: 'rgb(179, 217, 255)',
-            fontSize: '5vw',
-            letterSpacing: '1vw',
+            fontSize: '4vw',
+            letterSpacing: '.5vw',
             textShadow: `
           0 0 16px rgba(179,217,255,0.8),
           0 0 32px rgba(179,217,255,0.6),
@@ -92,9 +125,9 @@ function Landing() {
             userSelect: 'none'
           }}
         >
-          {selectedButton === 'one' && 'YA FAJJA!'}
-          {selectedButton === 'two' && 'THE WICK!'}
-          {selectedButton === 'three' && 'THIS GUY!'}
+          {selectedButton === 'one' && 'SEE TOMMOROW'}
+          {selectedButton === 'two' && 'ALL I NEVER WANTED'}
+          {selectedButton === 'three' && 'FLY'}
         </h1>
       </div>
       <div
@@ -241,6 +274,42 @@ function Landing() {
         >
           {isPlaying ? '⏸ PAUSE' : '▶ PLAY'}
         </button>
+      </div>
+      <div style={{
+        position: 'fixed',
+        top: 32, //
+        left: '50%',
+        transform: 'translateX(-50%)',
+        zIndex: 30,
+        width: 400,
+        background: 'rgba(10,20,40,0.85)',
+        borderRadius: 12,
+        padding: '16px 24px',
+        boxShadow: '0 0 24px 8px rgba(179,217,255,0.15)',
+        display: 'flex',
+        alignItems: 'center',
+        gap: 16
+      }}>
+        <span style={{ color: '#b3d9ff', fontFamily: 'VCR, monospace', minWidth: 48, textAlign: 'right' }}>
+          {formatTime(currentTime)}
+        </span>
+        <input
+          type="range"
+          min={0}
+          max={duration}
+          value={currentTime}
+          step="0.01"
+          onChange={handleSeek}
+          style={{
+            flex: 1,
+            accentColor: '#b3d9ff',
+            height: 4,
+            borderRadius: 2
+          }}
+        />
+        <span style={{ color: '#b3d9ff', fontFamily: 'VCR, monospace', minWidth: 48, textAlign: 'left' }}>
+          {formatTime(duration)}
+        </span>
       </div>
       <Row>
         <Col xs="12" className="p-0">
