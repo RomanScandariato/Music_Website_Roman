@@ -111,8 +111,8 @@ function Landing() {
           style={{
             fontFamily: 'VCR, monospace',
             color: 'rgb(179, 217, 255)',
-            fontSize: '4vw',
-            letterSpacing: '.5vw',
+            fontSize: '3.5vw',
+            letterSpacing: '.4vw',
             textShadow: `
           0 0 16px rgba(179,217,255,0.8),
           0 0 32px rgba(179,217,255,0.6),
