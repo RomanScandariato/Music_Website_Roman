@@ -364,7 +364,7 @@ function Landing() {
           zIndex: 50,
           display: 'flex',
           flexDirection: 'row',
-          gap: '10px', // closer together
+          gap: '10px',
         }}
       >
         <a
