@@ -1,17 +1,31 @@
 html, body, #root {
   height: 100%;
-  background-color: #0D1217;
-  font-family: 'LeagueSpartan';
-  color: white;
-}
-
-@font-face {
-  font-family: 'LeagueSpartan';
-  src: url('../images/fonts/LeagueSpartan.ttf');
+  overflow: hidden;
 }
 
 .dropdown-menu.show {
   max-width: 70px !important;
+}
+
+.vcr-font {
+  font-family: VCR, monospace !important;
+}
+
+.rec-date-time-container {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 10;
+  text-align: left;
+}
+
+.play-btn-top-left {
+  position: fixed;
+  top: 0;
+  left: 10;
+  z-index: 20;
+  margin: 0;
+  padding: 0;
 }
 
 .dropdown-menu[data-bs-popper] .dropdown-item-text {
